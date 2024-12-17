@@ -207,8 +207,8 @@
     </section>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
-    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.5/xlsx.full.min.js"></script>
+    <script type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script>
         document.querySelectorAll('nav ul li').forEach((li) => {
             const hoverBg = document.createElement('div');
@@ -248,7 +248,7 @@
             });
         });
         (function() {
-            emailjs.init("ytSj4Z6vJB4WOPMOn"); // Replace with your EmailJS public key
+            emailjs.init("ytSj4Z6vJB4WOPMOn"); 
         })();
 
         document.getElementById("contactForm").addEventListener("submit", function(event) {
@@ -266,23 +266,10 @@
             emailjs.send("service_d5yfyom", "template_6yebdbg", formData)
                 .then(function(response) {
                     alert("Message sent successfully!");
-                    // saveToExcel(formData);
                 }, function(error) {
                     alert("Failed to send message: " + error.text);
                 });
         });
-
-        // function saveToExcel(data) {
-        //     const wb = XLSX.utils.book_new();
-        //     const wsData = [
-        //         ["Name", "Email", "Phone", "Message"], 
-        //         [data.name, data.email, data.phone, data.message]
-        //     ];
-            
-        //     const ws = XLSX.utils.aoa_to_sheet(wsData);
-        //     XLSX.utils.book_append_sheet(wb, ws, "Contact Form");
-        //     XLSX.writeFile(wb, "contact_form_data.xlsx");
-        // }
     </script>
 </body>
 </html>
