@@ -36,7 +36,7 @@
             width: auto;
         }
         
-        nav ul {
+        .mainheader ul {
             list-style: none;
             margin: 0;
             padding: 0;
@@ -45,12 +45,12 @@
             gap: 25px;
         }
 
-        nav ul li {
+        .mainheader ul li {
             position: relative;
             overflow: hidden; /* Ensure animations stay within the element */
         }
 
-        nav ul li a {
+        .mainheader ul li a {
             color: #fff;
             text-decoration: none;
             font-size: 18px;
@@ -61,7 +61,7 @@
             background-color: transparent; /* Initial background color */
         }
 
-        nav ul li .hover-bg {
+        .mainheader ul li .hover-bg {
             position: absolute;
             bottom: 0;
             left: 0;
@@ -74,8 +74,8 @@
 </head>
 <body>
     <header>
-        <div class="logo"><a href="index.html"><img src="Logow.png" alt="Logo"></a></div>
-        <nav>
+        <div class="logo"><a href="index.html"><img src="/image/Logow.png" alt="Logo"></a></div>
+        <nav class="mainheader">
             <ul>
                 <li><a href="index.html">Homepage</a></li>
                 <li><a href="resume.html">Resume</a></li>
@@ -83,6 +83,56 @@
             </ul>
         </nav>
     </header>
+    <section>
+        <h1>Resume</h1>
+        <nav class="leftColumn">
+            <ul>
+                <li>About</li>
+                <li>Work Experience</li>
+                <li>Skill</li>
+                <li>Language</li>
+                <li>Education</li>
+                <li>Relevant Course</li>
+                <li>Additional Information</li>
+            </ul>
+        </nav>
+        <div class="workEx">
+            <h3>Work Experience</h3>
+            <p>
+
+            </p>
+        </div>
+        <div class="skill">
+            <h3>Skill</h3>
+            <p>
+                
+            </p>
+        </div>
+        <div class="language">
+            <h3>Language</h3>
+            <p>
+                
+            </p>
+        </div>
+        <div class="education">
+            <h3>Education</h3>
+            <p>
+                
+            </p>
+        </div>
+        <div class="reCourse">
+            <h3>Relevant Course</h3>
+            <p>
+                
+            </p>
+        </div>
+        <div class="addInfo">
+            <h3>Additional Information</h3>
+            <p>
+                
+            </p>
+        </div>
+    </section>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
     <script>
@@ -123,6 +173,20 @@
                 });
             });
         });
+        function scrollToSection(sectionId) {
+            // Option 1: Smooth scroll using scrollIntoView
+            document.getElementById(sectionId).scrollIntoView({ 
+                behavior: 'smooth' 
+            });
+
+            // Option 2: Scroll with offset (if needed)
+            // const element = document.getElementById(sectionId);
+            // const offset = 50; // Adjust for fixed header if needed
+            // window.scrollTo({
+            //     top: element.offsetTop - offset,
+            //     behavior: 'smooth'
+            // });
+        }
     </script>
 </body>
 </html>
