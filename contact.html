@@ -132,6 +132,7 @@
             border: none;
             cursor: pointer;
             transition: background-color 0.3s;
+            font-family: 'Italiana', serif;
         }
 
         .contactBox button:hover {
@@ -142,14 +143,16 @@
             width: 300px;
             line-height: 30px;
         }
-
-        .info h3 {
-            margin-bottom: 10px;
+        
+        .info h4{
+            color: #a7a7a7;
+            margin: none;
         }
 
-        .info h4 {
-            margin-bottom: 20px;
-            color: #9a9a9a;
+        .info .email,
+        .info .phonenum,
+        .info .social-links {
+            margin-bottom: 30px; 
         }
 
         .info .social-links {
@@ -194,10 +197,14 @@
             </form>
         </div>
         <div class="info">
-            <h3>Email:</h3>
-            <h4>zijiechen1@gmail.com</h4>
+            <div class="email">
+                <h3>Email:</h3>
+                <h4>zijiechen1@gmail.com</h4>
+            </div>
+            <div class="phonenum">
             <h3>Phone#:</h3>
             <h4>9179526343</h4>
+            </div>
             <h3>Additional Links</h3>
             <div class="social-links">
                 <a href="https://github.com/JackC129" target="_blank"><img src="image/githubLogo.png" alt="GitHub"></a>
