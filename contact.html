@@ -92,6 +92,7 @@
         .contactBox h3 {
             font-size: 30px;
             margin-bottom: 20px;
+            min-height: 40px;
         }
 
         .contactBox form {
@@ -179,7 +180,7 @@
     </header>
     <section class="contact">
         <div class="contactBox">
-            <h3>Message Me</h3>
+            <h3 id="typingHeading"></h3>
             <form id="contactForm">
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" placeholder="Enter your name" required>
@@ -254,6 +255,63 @@
                 });
             });
         });
+        
+        const messages = [
+            "Hi there! Welcome to my site.",
+            "Contact me today!",
+            "Let's get connected!"
+        ];
+
+        let currentMessageIndex = 0; 
+        const typingHeading = document.getElementById("typingHeading");
+
+        function typeMessage(message) {
+            typingHeading.innerHTML = ""; 
+            let index = 0;
+
+            anime({
+                targets: {},
+                duration: message.length * 80, 
+                easing: "linear",
+                update: function(anim) {
+                    if (index < message.length) {
+                        typingHeading.innerHTML += message[index];
+                        index++;
+                    }
+                },
+                complete: function() {
+                    setTimeout(() => {
+                        deleteMessage(); 
+                    }, 1000);
+                }
+            });
+        }
+
+        function deleteMessage() {
+            let message = typingHeading.innerHTML;
+            let index = message.length;
+
+            anime({
+                targets: {},
+                duration: message.length * 50,
+                easing: "linear",
+                update: function(anim) {
+                    if (index > 0) {
+                        typingHeading.innerHTML = message.substring(0, index - 1);
+                        index--;
+                    }
+                },
+                complete: function() {
+                    currentMessageIndex = (currentMessageIndex + 1) % messages.length;
+                    setTimeout(() => {
+                        typeMessage(messages[currentMessageIndex]); 
+                    }, 500);
+                }
+            });
+        }
+        typeMessage(messages[currentMessageIndex]);
+
+        //Email message to linked email
         (function() {
             emailjs.init("ytSj4Z6vJB4WOPMOn"); 
         })();

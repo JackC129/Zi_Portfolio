@@ -8,13 +8,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Italiana&display=swap" rel="stylesheet">
     <style>
-        body {
+        body, html {
             margin: 0;
+            padding: 0;
             font-family: "Italiana", sans-serif;
             background-color: #000;
             color: #fff;
-            display: flex;
-            flex-direction: column;
         }
 
         header {
@@ -47,7 +46,7 @@
 
         .mainheader ul li {
             position: relative;
-            overflow: hidden; 
+            overflow: hidden;
         }
 
         .mainheader ul li a {
@@ -56,9 +55,9 @@
             font-size: 18px;
             padding: 10px 15px;
             position: relative;
-            z-index: 2; 
+            z-index: 2;
             display: inline-block;
-            background-color: transparent; 
+            background-color: transparent;
         }
 
         .mainheader ul li .hover-bg {
@@ -70,6 +69,87 @@
             background-color: #fff;
             z-index: 1; 
         }
+
+        .header{
+            text-align: center;
+            font-size: 50px;
+        }
+
+        .page-container {
+            display: flex;
+            margin-top: 90px; /* Adjust based on header height */
+        }
+
+        .left-nav {
+            position: fixed;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0,0,0,0.7);
+            padding: 20px;
+            border-radius: 0 10px 10px 0;
+            z-index: 999;
+        }
+
+        .left-nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .left-nav ul li {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .left-nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 5px 10px;
+            position: relative;
+            z-index: 2;
+            display: inline-block;
+            background-color: transparent;
+            white-space: nowrap;
+        }
+
+        .left-nav ul li .hover-underline {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #A7F039;
+            z-index: 1;
+        }
+
+        .content {
+            margin-left: 200px;
+            padding: 20px;
+            width: calc(100% - 240px);
+        }
+
+        .section {
+            scroll-margin-top: 100px;
+            min-height: 30vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .section h1 {
+            display: inline-block; 
+            border-bottom: 3px solid #A7F039; 
+            padding-bottom: 10px; 
+            margin-bottom: 20px; 
+        }
+
     </style>
 </head>
 <body>
@@ -77,73 +157,156 @@
         <div class="logo"><a href="index.html"><img src="image/Logow.png" alt="Logo"></a></div>
         <nav class="mainheader">
             <ul>
-                <li><a href="index.html">Homepage</a></li>
-                <li><a href="resume.html">Resume</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li>
+                    <a href="index.html">Homepage</a>
+                    <div class="hover-bg"></div>
+                </li>
+                <li>
+                    <a href="resume.html">Resume</a>
+                    <div class="hover-bg"></div>
+                </li>
+                <li>
+                    <a href="contact.html">Contact</a>
+                    <div class="hover-bg"></div>
+                </li>
             </ul>
         </nav>
     </header>
-    <section>
-        <h1>Resume</h1>
-        <nav class="leftColumn">
+
+    <div class="page-container">
+        <nav class="left-nav">
             <ul>
-                <li>About</li>
-                <li>Work Experience</li>
-                <li>Skill</li>
-                <li>Language</li>
-                <li>Education</li>
-                <li>Relevant Course</li>
-                <li>Additional Information</li>
+                <li>
+                    <a href="#about" onclick="scrollToSection('about')">About</a>
+                    <div class="hover-underline"></div>
+                </li>
+                <li>
+                    <a href="#work-experience" onclick="scrollToSection('work-experience')">Work Experience</a>
+                    <div class="hover-underline"></div>
+                </li>
+                <li>
+                    <a href="#skills" onclick="scrollToSection('skills')">Skills</a>
+                    <div class="hover-underline"></div>
+                </li>
+                <li>
+                    <a href="#language" onclick="scrollToSection('language')">Language</a>
+                    <div class="hover-underline"></div>
+                </li>
+                <li>
+                    <a href="#education" onclick="scrollToSection('education')">Education</a>
+                    <div class="hover-underline"></div>
+                </li>
+                <li>
+                    <a href="#courses" onclick="scrollToSection('courses')">Relevant Courses</a>
+                    <div class="hover-underline"></div>
+                </li>
             </ul>
         </nav>
-        <div class="workEx">
-            <h3>Work Experience</h3>
-            <p>
 
-            </p>
+        <div class="content">
+            <h1 class="header">Resume</h1>
+            <section id="about" class="section">
+                <h1>About</h1>
+                <p>A dedicated web design and UI/UX design enthusiast with extensive experience in managing and 
+                    updating websites in corporate environments. With skills in HTML, CSS, JavaScript, and a 
+                    background in office management, I combine creativity with technical expertise to ensure 
+                    that websites are both functional and visually appealing. My passion for learning drives 
+                    me to constantly expand my knowledge in web design and development, making me eager to take 
+                    on new challenges and advancements in this dynamic industry.</p>
+            </section>
+
+            <section id="work-experience" class="section">
+                <h1>Work Experience</h1>
+                <h2>
+                    A+ Academy<br>12/2021 - Present<br>Brooklyn, NY
+                </h2>
+                <h3>
+                    Office Manager/Office Assistant
+                </h3>
+                <ul>
+                    <li>Manage student registration, handle phone inquiries, and provide support to students.</li>
+                    <li>Assisting parents in English, Mandarin, and other specific Chinese dialects to ensure effective communication and support.</li>
+                    <li>Leveraged proficiency in Google Suite and Microsoft Suite to streamline administrative tasks and data management for up to 200 students.</li>
+                    <li>Oversee and update the company’s official website to ensure accurate and current information using Squarespace, HTML, and Javascript.</li>
+                </ul>
+
+                <h2>
+                    Worldtots Preschool<br>9/2022 - 6/2023<br>Brooklyn, NY
+                </h2>
+                <h3>
+                    Teacher Assistant/Floater
+                </h3>
+                <ul>
+                    <li>Supervised three classrooms, each with 18 students aged 3-5, supporting teachers in classroom activities and managing transitions between different areas.</li>
+                    <li>Acted as a floater, providing seamless support across three classrooms as required.</li>
+                    <li>Utilized Mandarin, Fuzhounese, and Cantonese to communicate with non-English-speaking families.</li>
+                    <li>Managed the preschool’s official website, ensuring it remained up-to-date using Squarespace.</li>
+                </ul>
+
+                <h2>
+                    Kung Fu Tea<br>7/2018 - 3/2019<br>Queens, NY
+                </h2>
+                <h3>
+                    Cashier 
+                </h3>
+                <ul>
+                    <li>Processed customer orders, prepared beverages, and handled payments efficiently.</li>
+                    <li>Maintained a clean and organized workspace while delivering excellent customer service.</li>
+                </ul>
+            </section>
+
+            <section id="skills" class="section">
+                <h1>Skills</h1>
+                <ul>
+                    <li>Web Development: HTML, CSS, JavaScript, Squarespace</li>
+                    <li>Programming Languages: Python, C++</li>
+                    <li>Tools: Adobe Illustrator, Google Suite, Microsoft Suite</li>
+                    <li>Management</li>
+                    <li>Communication</li>
+                    <li>Creativity</li>
+                    <li>Organization</li>
+                    <li>Multitask</li>
+                    <li>Team Management</li>
+                    <li>Customer Service</li>
+                </ul>
+            </section>
+
+            <section id="language" class="section">
+                <h1>Languages</h1>
+                <ul>
+                    <li>Fluent in Chinese Mandarin and English</li>
+                    <li>Intermediate proficiency in Fuzhounese</li>
+                    <li>Beginner proficiency in  Cantonese</li>
+                </ul>
+            </section>
+
+            <section id="education" class="section">
+                <h1>Education</h1>
+                <h2>
+                    CUNY Hunter College <br>2021 - 2025
+                </h2>
+                <h3>Bachelor of Emerging Media</h3>
+            </section>
+
+            <section id="courses" class="section">
+                <h1>Relevant Courses</h1>
+                <ul>
+                    <li>Web Production</li>
+                    <li>Web Programming</li>
+                    <li>Creative Code</li>
+                    <li>Digital Design and Usability</li>
+                </ul>
+            </section>
         </div>
-        <div class="skill">
-            <h3>Skill</h3>
-            <p>
-                
-            </p>
-        </div>
-        <div class="language">
-            <h3>Language</h3>
-            <p>
-                
-            </p>
-        </div>
-        <div class="education">
-            <h3>Education</h3>
-            <p>
-                
-            </p>
-        </div>
-        <div class="reCourse">
-            <h3>Relevant Course</h3>
-            <p>
-                
-            </p>
-        </div>
-        <div class="addInfo">
-            <h3>Additional Information</h3>
-            <p>
-                
-            </p>
-        </div>
-    </section>
+    </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
     <script>
-        document.querySelectorAll('nav ul li').forEach((li) => {
-            const hoverBg = document.createElement('div');
-            hoverBg.classList.add('hover-bg');
-            li.appendChild(hoverBg);
-
+        // Header Hover Effect
+        document.querySelectorAll('.mainheader ul li').forEach((li) => {
             li.addEventListener('mouseenter', () => {
                 anime({
-                    targets: hoverBg,
+                    targets: li.querySelector('.hover-bg'),
                     height: ['0%', '100%'],
                     easing: 'easeOutQuad',
                     duration: 400,
@@ -159,7 +322,7 @@
 
             li.addEventListener('mouseleave', () => {
                 anime({
-                    targets: hoverBg,
+                    targets: li.querySelector('.hover-bg'),
                     height: ['100%', '0%'], 
                     easing: 'easeOutQuad',
                     duration: 400,
@@ -173,20 +336,36 @@
                 });
             });
         });
-        function scrollToSection(sectionId) {
-            // Option 1: Smooth scroll using scrollIntoView
-            document.getElementById(sectionId).scrollIntoView({ 
-                behavior: 'smooth' 
+
+        // Left Nav Underline Hover Effect
+        document.querySelectorAll('.left-nav ul li').forEach((li) => {
+            li.addEventListener('mouseenter', () => {
+                anime({
+                    targets: li.querySelector('.hover-underline'),
+                    width: ['0%', '100%'],
+                    easing: 'easeOutQuad',
+                    duration: 300
+                });
             });
 
-            // Option 2: Scroll with offset (if needed)
-            // const element = document.getElementById(sectionId);
-            // const offset = 50; // Adjust for fixed header if needed
-            // window.scrollTo({
-            //     top: element.offsetTop - offset,
-            //     behavior: 'smooth'
-            // });
+            li.addEventListener('mouseleave', () => {
+                anime({
+                    targets: li.querySelector('.hover-underline'),
+                    width: ['100%', '0%'],
+                    easing: 'easeOutQuad',
+                    duration: 300
+                });
+            });
+        });
+
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            window.scrollTo({
+                top: section.offsetTop - 100, // Offset for fixed header
+                behavior: 'smooth' // Smooth scroll animation
+            });
         }
+
     </script>
 </body>
 </html>
