@@ -340,20 +340,53 @@
 
             const header = document.querySelector("header");
             const logoImg = document.querySelector(".logo img");
+            const navLinks = document.querySelectorAll("nav ul li a");
+            const contactBox = document.querySelector(".contactBox");
+            const infoBox = document.querySelector(".info");
 
             if (width <= 480) {
                 header.style.flexDirection = "column";
+                header.style.alignItems = "center";
                 logoImg.style.maxHeight = "40px";
+
+                navLinks.forEach(link => {
+                    link.style.fontSize = "14px";
+                    link.style.padding = "5px 10px";
+                });
+
+                contactBox.style.width = "90vw";
+                infoBox.style.width = "100%";
+                infoBox.style.marginTop = "20px";
             } else if (width <= 768) {
+                header.style.flexDirection = "row";
+                header.style.alignItems = "center";
                 logoImg.style.maxHeight = "50px";
+
+                navLinks.forEach(link => {
+                    link.style.fontSize = "16px";
+                    link.style.padding = "8px 12px";
+                });
+
+                contactBox.style.width = "70vw";
+                infoBox.style.width = "100%";
+                infoBox.style.marginTop = "10px";
             } else {
                 header.style.flexDirection = "row";
                 logoImg.style.maxHeight = "70px";
+
+                navLinks.forEach(link => {
+                    link.style.fontSize = "18px";
+                    link.style.padding = "10px 15px";
+                });
+
+                contactBox.style.width = "50vw";
+                infoBox.style.width = "300px";
+                infoBox.style.marginTop = "0";
             }
         }
 
         window.addEventListener("resize", handleResponsive);
-        handleResponsive(); 
+        handleResponsive();
     </script>
 </body>
 </html>
