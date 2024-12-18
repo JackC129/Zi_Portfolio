@@ -149,90 +149,6 @@
             padding-bottom: 10px; 
             margin-bottom: 20px; 
         }
-
-        @media (max-width: 1024px) {
-            .logo img {
-                max-height: 50px;
-            }
-
-            header {
-                padding: 5px 10px;
-            }
-
-            .mainheader ul {
-                gap: 15px;
-                padding-right: 10px;
-            }
-
-            .left-nav {
-                padding: 10px;
-            }
-
-            .content {
-                margin-left: 0;
-                width: 100%;
-            }
-        }   
-
-        @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                align-items: flex-start;
-                padding: 10px;
-            }
-
-            .mainheader ul {
-                flex-direction: column;
-                gap: 10px;
-                padding-right: 0;
-            }
-
-            .left-nav {
-                display: none; 
-            }
-
-            .content {
-                margin-left: 0;
-                padding: 10px;
-                width: 100%;
-            }
-
-            .section h1 {
-                font-size: 24px;
-            }
-
-            .header {
-                font-size: 36px;
-            }
-
-            .section {
-                padding: 10px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .logo img {
-                max-height: 40px;
-            }
-
-            .mainheader ul li a {
-                font-size: 16px;
-                padding: 5px;
-            }
-
-            .section h1 {
-                font-size: 20px;
-            }
-
-            p, ul {
-                font-size: 14px;
-            }
-
-            .header {
-                font-size: 28px;
-            }
-        }
-
     </style>
 </head>
 <body>
@@ -461,7 +377,25 @@
                 scrollToSection(targetId); // Smooth scroll to section
             });
         });
+        function handleResponsive() {
+            const width = window.innerWidth;
 
+            const header = document.querySelector("header");
+            const logoImg = document.querySelector(".logo img");
+
+            if (width <= 480) {
+                header.style.flexDirection = "column";
+                logoImg.style.maxHeight = "40px";
+            } else if (width <= 768) {
+                logoImg.style.maxHeight = "50px";
+            } else {
+                header.style.flexDirection = "row";
+                logoImg.style.maxHeight = "70px";
+            }
+        }
+
+        window.addEventListener("resize", handleResponsive);
+        handleResponsive(); // Run on page load
     </script>
 </body>
 </html>
