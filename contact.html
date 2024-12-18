@@ -335,6 +335,25 @@
                     alert("Failed to send message: " + error.text);
                 });
         });
+        function handleResponsive() {
+            const width = window.innerWidth;
+
+            const header = document.querySelector("header");
+            const logoImg = document.querySelector(".logo img");
+
+            if (width <= 480) {
+                header.style.flexDirection = "column";
+                logoImg.style.maxHeight = "40px";
+            } else if (width <= 768) {
+                logoImg.style.maxHeight = "50px";
+            } else {
+                header.style.flexDirection = "row";
+                logoImg.style.maxHeight = "70px";
+            }
+        }
+
+        window.addEventListener("resize", handleResponsive);
+        handleResponsive(); 
     </script>
 </body>
 </html>
