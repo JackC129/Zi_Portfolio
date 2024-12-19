@@ -193,31 +193,40 @@
             </div>
         </section> -->
     </div>
-</body>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
-<script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script> 
     document.addEventListener("DOMContentLoaded", () => {
         const progressBar = document.querySelector(".progress-bar");
         const loadingText = document.querySelector(".loading-text");
         const loadingScreen = document.querySelector(".loading-screen");
         const mainContent = document.querySelector(".main-content");
 
-        let progress = { value: 0 };
+        let progress = { value: 0 }; 
+        let fadeInCompleted = false; 
 
         anime({
             targets: progress,
             value: 100,
-            duration: 2000, // 3 seconds
+            duration: 2000, 
             easing: "linear",
             update: function () {
                 loadingText.textContent = `${Math.floor(progress.value)}%`;
                 progressBar.style.width = `${progress.value}%`;
             },
             complete: function () {
-                // Hide the loading screen and show the main content
-                loadingScreen.style.display = "none";
-                mainContent.style.display = "block";
+                if (!fadeInCompleted) { 
+                    fadeInCompleted = true; 
+
+                    loadingScreen.style.display = "none";
+
+                    gsap.fromTo(
+                        ".main-content",
+                        { opacity: 0 },
+                        { opacity: 1, duration: 1.5, ease: "power2.out" }
+                    );
+                }
             },
         });
     });
@@ -298,4 +307,5 @@
     window.addEventListener("resize", handleResponsive);
     handleResponsive();
 </script>
+</body>
 </html>
