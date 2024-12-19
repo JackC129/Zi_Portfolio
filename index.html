@@ -99,26 +99,6 @@
             padding: 0;
             color: #A7F039;
         }
-
-        @media (max-width: 768px) {
-            .content h1 {
-                font-size: 8vw;
-            }
-
-            .content p {
-                font-size: 3vw;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .content h1 {
-                font-size: 10vw;
-            }
-
-            .content p {
-                font-size: 4vw;
-            }
-        }
     </style>
 </head>
 <body>
@@ -198,5 +178,43 @@
             });
         });
     });
+
+    function handleResponsive() {
+        const width = window.innerWidth;
+        const header = document.querySelector("header");
+        const logoImg = document.querySelector(".logo img");
+        const nav = document.querySelector("nav");
+        const contentH = document.querySelector(".content h1");
+        const contentP = document.querySelector(".content p");
+
+        if (width <= 480) {
+            header.style.flexDirection = "column"; 
+            logoImg.style.maxHeight = "40px"; 
+            nav.style.display = "flex"; 
+            nav.style.flexDirection = "column"; 
+            nav.style.alignItems = "center"; 
+            nav.style.marginTop = "10px"; 
+            contentH.style.fontSize = "30vw";
+            contentP.style.fontSize = "10vw";
+        } 
+        else if (width <= 768) {
+            header.style.flexDirection = "row"; 
+            logoImg.style.maxHeight = "50px"; 
+            nav.style.flexDirection = "row"; 
+            nav.style.marginTop = "0"; 
+            contentH.style.fontSize = "18vw";
+            contentP.style.fontSize = "6vw";
+        } 
+        else {
+            header.style.flexDirection = "row"; 
+            logoImg.style.maxHeight = "70px"; 
+            nav.style.flexDirection = "row"; 
+            nav.style.marginTop = "0"; 
+            contentH.style.fontSize = ""; 
+            contentP.style.fontSize = "";
+        }
+    }
+    window.addEventListener("resize", handleResponsive);
+    handleResponsive();
 </script>
 </html>

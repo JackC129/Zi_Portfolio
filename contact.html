@@ -75,12 +75,12 @@
 
         .contact {
             display: flex;
+            flex-direction: column; 
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            padding-top: 80px;
-            box-sizing: border-box;
-            gap: 50px;
+            margin-top: 10vh; 
+            gap: 20px; 
+            width: 90%;
         }
 
         .contactBox {
@@ -344,61 +344,54 @@
                     alert("Failed to send message: " + error.text);
                 });
         });
+
         function handleResponsive() {
             const width = window.innerWidth;
-
             const header = document.querySelector("header");
             const logoImg = document.querySelector(".logo img");
-            const navLinks = document.querySelectorAll("nav ul li a");
+            const navList = document.querySelector("nav ul");
+            const contactSection = document.querySelector(".contact");
             const contactBox = document.querySelector(".contactBox");
-            const infoBox = document.querySelector(".info");
+            const infoSection = document.querySelector(".info");
 
+            contactSection.style.width = "100%";
             if (width <= 480) {
                 header.style.flexDirection = "column";
-                header.style.alignItems = "center";
                 logoImg.style.maxHeight = "40px";
+                logoImg.style.marginBottom = "10px";
+                navList.style.display = "flex";
+                navList.style.flexDirection = "row";
+                navList.style.justifyContent = "space-evenly";
+                navList.style.width = "100%";
+                navList.style.padding = "0";
 
-                navLinks.forEach(link => {
-                    link.style.fontSize = "14px";
-                    link.style.padding = "5px 10px";
-                });
-
-                contactBox.style.width = "85vw";
-                contactBox.style.marginLeft = "10px";
-                infoBox.style.width = "100%";
-                infoBox.style.marginTop = "20px";
-            } else if (width <= 768) {
-                header.style.flexDirection = "row";
-                header.style.alignItems = "center";
-                logoImg.style.maxHeight = "50px";
-
-                navLinks.forEach(link => {
-                    link.style.fontSize = "16px";
-                    link.style.padding = "8px 12px";
-                });
-
-                contactBox.style.width = "70vw";
-                contactBox.style.marginLeft = "10px";
-                infoBox.style.width = "100%";
-                infoBox.style.marginTop = "10px";
+                contactSection.style.flexDirection = "column";
+                contactSection.style.marginTop = "20vh"; 
+                contactBox.style.width = "90%";
+                contactBox.style.margin = "0 auto"; 
+                infoSection.style.width = "90%";
+                infoSection.style.margin = "20px auto"; 
             } else {
                 header.style.flexDirection = "row";
                 logoImg.style.maxHeight = "70px";
+                navList.style.display = "flex";
+                navList.style.flexDirection = "row";
+                navList.style.justifyContent = "flex-end";
+                navList.style.width = "auto";
+                navList.style.paddingRight = "30px";
 
-                navLinks.forEach(link => {
-                    link.style.fontSize = "18px";
-                    link.style.padding = "10px 15px";
-                });
-
+                contactSection.style.flexDirection = "row";
+                contactSection.style.marginTop = "20vh"; 
                 contactBox.style.width = "50vw";
-                contactBox.style.marginLeft = "10px";
-                infoBox.style.width = "300px";
-                infoBox.style.marginTop = "0";
+                contactBox.style.margin = "0"; 
+                infoSection.style.width = "300px";
+                infoSection.style.margin = "0"; 
             }
         }
 
         window.addEventListener("resize", handleResponsive);
-        handleResponsive();
+        handleResponsive(); 
+
     </script>
 </body>
 </html>

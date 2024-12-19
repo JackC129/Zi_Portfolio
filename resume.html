@@ -387,25 +387,37 @@
                 scrollToSection(targetId); // Smooth scroll to section
             });
         });
+
         function handleResponsive() {
             const width = window.innerWidth;
-
             const header = document.querySelector("header");
             const logoImg = document.querySelector(".logo img");
+            const leftNav = document.querySelector(".left-nav");
+            const mainHeader = document.querySelector(".mainheader ul");
+            const content = document.querySelector(".content");
 
             if (width <= 480) {
                 header.style.flexDirection = "column";
                 logoImg.style.maxHeight = "40px";
-            } else if (width <= 768) {
-                logoImg.style.maxHeight = "50px";
+                leftNav.style.display = "none";
+                content.style.marginLeft = "0"; 
+                content.style.width = "100%";
+                mainHeader.style.display = "flex";
+                mainHeader.style.justifyContent = "space-evenly";
+                mainHeader.style.width = "100%";
+                mainHeader.style.paddingRight = "0";
             } else {
                 header.style.flexDirection = "row";
                 logoImg.style.maxHeight = "70px";
+                leftNav.style.display = "block"; 
+                mainHeader.style.justifyContent = "flex-end";
+                mainHeader.style.width = "auto";
+                content.style.marginLeft = "200px"; 
+                content.style.width = "calc(100% - 240px)";
             }
         }
-
         window.addEventListener("resize", handleResponsive);
-        handleResponsive(); 
+        handleResponsive();
     </script>
 </body>
 </html>
