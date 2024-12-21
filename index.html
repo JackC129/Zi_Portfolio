@@ -288,7 +288,13 @@
         }
 
         .gallery-wrapper::-webkit-scrollbar {
-            display: none;
+            height: 5px;
+            background-color: transparent;
+        }
+
+        .gallery-wrapper::-webkit-scrollbar-thumb {
+            background-color: #A7F039;
+            border-radius: 10px;
         }
 
         .gallery img {
@@ -297,6 +303,13 @@
             border-radius: 10px;
             display: block;
             transition: transform 0.3s ease;
+        }
+
+        @media (max-width: 768px) {
+            .gallery-content {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
         }
 
         .gallery-overlay {
@@ -512,27 +525,27 @@
 
         document.addEventListener("DOMContentLoaded", () => {
             const galleryWrapper = document.querySelector('.gallery-wrapper');
-            let scrollDirection = 1; 
-            let autoScrollAnimation; 
+            let scrollDirection = 1;
+            let autoScrollAnimation;
 
             function startAutoScroll() {
                 autoScrollAnimation = anime({
                     targets: galleryWrapper,
                     easing: 'linear',
-                    duration: Infinity, 
+                    duration: Infinity,
                     autoplay: true,
                     loop: true,
                     update: () => {
                         if (scrollDirection === 1) {
-                            galleryWrapper.scrollLeft += 1; 
+                            galleryWrapper.scrollLeft += 1;
                         } else {
-                            galleryWrapper.scrollLeft -= 1; 
+                            galleryWrapper.scrollLeft -= 1;
                         }
 
                         if (galleryWrapper.scrollLeft + galleryWrapper.clientWidth >= galleryWrapper.scrollWidth) {
-                            scrollDirection = -1; 
+                            scrollDirection = -1;
                         } else if (galleryWrapper.scrollLeft <= 0) {
-                            scrollDirection = 1; 
+                            scrollDirection = 1;
                         }
                     },
                 });
@@ -550,7 +563,7 @@
 
             galleryWrapper.addEventListener('touchstart', (e) => {
                 stopAutoScroll();
-                isTouching = true; 
+                isTouching = true;
                 startX = e.touches[0].clientX;
                 lastScrollLeft = galleryWrapper.scrollLeft;
             });
@@ -558,12 +571,12 @@
             galleryWrapper.addEventListener('touchmove', (e) => {
                 const touchX = e.touches[0].clientX;
                 const deltaX = touchX - startX;
-                galleryWrapper.scrollLeft = lastScrollLeft - deltaX; 
+                galleryWrapper.scrollLeft = lastScrollLeft - deltaX;
             });
 
             galleryWrapper.addEventListener('touchend', () => {
                 isTouching = false;
-                startAutoScroll(); 
+                startAutoScroll();
             });
 
             galleryWrapper.addEventListener('mouseenter', stopAutoScroll);
