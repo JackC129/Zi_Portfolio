@@ -573,16 +573,16 @@
         });
 
         function scrollGallery(direction) {
-                    const galleryWrapper = document.querySelector('.gallery-wrapper');
-                    const scrollAmount = direction * 300;
-                    galleryWrapper.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-                }
+            const galleryWrapper = document.querySelector('.gallery-wrapper');
+            const scrollAmount = direction * 300;
+            galleryWrapper.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        }
 
         //Alternate Project Item
         document.querySelectorAll('.project-item').forEach((item, index) => {
-            if (index % 2 === 1) { 
+            if (index % 2 === 1) {
                 item.style.flexDirection = 'row-reverse';
-            } else { 
+            } else {
                 item.style.flexDirection = 'row';
             }
         });
@@ -688,6 +688,10 @@
             const nav = document.querySelector("nav");
             const contentH = document.querySelector(".content h1");
             const contentP = document.querySelector(".content p");
+            const projectHeads = document.querySelectorAll(".project-container h1");
+            const projectDescs = document.querySelectorAll(".project-container h2");
+            const projectBtns = document.querySelectorAll(".visit");
+            const galleryImages = document.querySelectorAll(".gallery img");
 
             if (width <= 480) {
                 header.style.flexDirection = "column";
@@ -698,6 +702,13 @@
                 nav.style.marginTop = "10px";
                 contentH.style.fontSize = "30vw";
                 contentP.style.fontSize = "10vw";
+                projectHeads.forEach(h1 => h1.style.fontSize = "20px");
+                projectDescs.forEach(h2 => h2.style.fontSize = "10px");
+                projectBtns.forEach(btn => {
+                    btn.style.fontSize = "12px";
+                    btn.style.padding = "5px 10px";
+                });
+                galleryImages.forEach(img => img.style.maxWidth = "200px");
             }
             else if (width <= 768) {
                 header.style.flexDirection = "row";
