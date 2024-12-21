@@ -508,31 +508,68 @@
                     window.scrollBy(0, delta);
                 }
             });
+        });
 
-            //Gallery Auto Scroll
+        document.addEventListener("DOMContentLoaded", () => {
             const galleryWrapper = document.querySelector('.gallery-wrapper');
-            let autoScrollInterval;
-            let scrollDirection = 1;
+            let scrollDirection = 1; 
+            let autoScrollAnimation; 
 
             function startAutoScroll() {
-                autoScrollInterval = setInterval(() => {
-                    galleryWrapper.scrollBy({ left: 2 * scrollDirection, behavior: 'smooth' });
+                autoScrollAnimation = anime({
+                    targets: galleryWrapper,
+                    easing: 'linear',
+                    duration: Infinity, 
+                    autoplay: true,
+                    loop: true,
+                    update: () => {
+                        if (scrollDirection === 1) {
+                            galleryWrapper.scrollLeft += 1; 
+                        } else {
+                            galleryWrapper.scrollLeft -= 1; 
+                        }
 
-                    // Reverse direction 
-                    if (galleryWrapper.scrollLeft + galleryWrapper.clientWidth >= galleryWrapper.scrollWidth) {
-                        scrollDirection = -1;
-                    } else if (galleryWrapper.scrollLeft <= 0) {
-                        scrollDirection = 1;
-                    }
-                }, 20);
+                        if (galleryWrapper.scrollLeft + galleryWrapper.clientWidth >= galleryWrapper.scrollWidth) {
+                            scrollDirection = -1; 
+                        } else if (galleryWrapper.scrollLeft <= 0) {
+                            scrollDirection = 1; 
+                        }
+                    },
+                });
             }
+
             function stopAutoScroll() {
-                clearInterval(autoScrollInterval);
+                if (autoScrollAnimation) {
+                    autoScrollAnimation.pause();
+                }
             }
-            startAutoScroll();
-            // Scrolling when mouse enter
+
+            let startX = 0;
+            let lastScrollLeft = 0;
+            let isTouching = false;
+
+            galleryWrapper.addEventListener('touchstart', (e) => {
+                stopAutoScroll();
+                isTouching = true; 
+                startX = e.touches[0].clientX;
+                lastScrollLeft = galleryWrapper.scrollLeft;
+            });
+
+            galleryWrapper.addEventListener('touchmove', (e) => {
+                const touchX = e.touches[0].clientX;
+                const deltaX = touchX - startX;
+                galleryWrapper.scrollLeft = lastScrollLeft - deltaX; 
+            });
+
+            galleryWrapper.addEventListener('touchend', () => {
+                isTouching = false;
+                startAutoScroll(); 
+            });
+
             galleryWrapper.addEventListener('mouseenter', stopAutoScroll);
             galleryWrapper.addEventListener('mouseleave', startAutoScroll);
+
+            startAutoScroll();
         });
 
         document.querySelectorAll('.visit').forEach(button => {
